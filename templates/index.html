@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block title %}ממיר לכוסות🚀{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">ברך הבא לאתר ממיר מ"ל וגרם לכוסות!</h1>
+            <p class="hero-subtitle">כתבו כמות גרם או מ"ל ונמיר לכם אותה הישר לכמות כוסות (רבע כוס, כוס חצי כוס וכו')</p>
+        </div>
+    </div>
+</section>
+
+<section class="converter-section">
+    <div class="container">
+        <div class="converter-box">
+            <h2 class="converter-title">המרה מהירה</h2>
+            <p class="converter-description">הכניסו את הכמות והחומר</p>
+            <div class="input-group">
+                <input type="number" id="amount" class="converter-input" placeholder="הכניסו כמות..." value="100">
+                <select id="unit" class="unit-select">
+                    <option value="gram" selected>גרם</option>
+                    <option value="ml">מ"ל</option>
+                </select>
+            </div>
+            <div class="input-group" id="material-group">
+                <select id="material" class="material-select">
+                    <option value="water">מים</option>
+                    <option value="sugar">סוכר</option>
+                    <option value="flour">קמח</option>
+                    <option value="salt">מלח</option>
+                    <option value="oil">שמן</option>
+                    <option value="baking_powder">אבקת אפייה</option>
+                    <option value="butter">חמאה</option>
+                    <option value="rice">אורז</option>
+                    <option value="honey">דבש</option>
+                </select>
+            </div>
+
+            <p class="converter-description" style="margin-top: -1rem; margin-bottom: 2rem; font-size: 0.95rem; opacity: 1; color: var(--white); text-align: right;">
+                **כיצד לבחור יחידה:**<br>
+                1. **בחרו 'גרם'** עבור מוצקים יבשים כמו **קמח, סוכר ומלח**. תוכלו לבחור את החומר כדי לקבל המרה מדויקת על בסיס משקל.<br>
+                2. **בחרו 'מ"ל'** עבור **נוזלים** (כמו מים, שמן וחלב) כשאתם מודדים אותם בכוסות מדידה.
+            </p>
+
+            <div class="result-box">
+                <p class="result-text">
+                    **תוצאה:**
+                    <br>כוסות: <b><span id="result-cups"></span></b>
+                    <br>כפות: <b><span id="result-tbs"></span></b>
+                    <br>כפיות: <b><span id="result-ts"></span></b>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="features">
+    <div class="container">
+        <h2 class="section-title">התכונות שלנו</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>מהיר ויעיל</h3>
+                <p>ביצועים מעולים עם Flask</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>עיצוב מודרני</h3>
+                <p>ממשק משתמש נקי ואטרקטיבי</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>רספונסיבי</h3>
+                <p>נראה מעולה בכל מכשיר</p>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
