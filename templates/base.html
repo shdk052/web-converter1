@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}אתר מודרני{% endblock %}</title>
+    <title>{% block title %}ממיר כמויות{% endblock %}</title>
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NRS195L7FB"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NBS195LZF0"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-NRS195L7FB'); 
+      gtag('config', 'G-NBS195LZF0'); 
     </script>
     </head>
 <body>
@@ -61,15 +61,16 @@
             const unit = unitSelect.value;
             const material = materialSelect.value;
             
+            // המפתחות האלה מתאימים לקוד Python המתוקן
             const cupsSpan = document.getElementById('result-cups');
             const tbsSpan = document.getElementById('result-tbs');
             const tsSpan = document.getElementById('result-ts');
             
             // בדיקת תקינות קלט
             if (!amount || parseFloat(amount) <= 0) {
-                cupsSpan.textContent = 'אנא הכניסו כמות תקינה';
-                tbsSpan.textContent = '';
-                tsSpan.textContent = '';
+                if (cupsSpan) cupsSpan.textContent = 'אנא הכניסו כמות תקינה';
+                if (tbsSpan) tbsSpan.textContent = '';
+                if (tsSpan) tsSpan.textContent = '';
                 return;
             }
             
@@ -87,14 +88,14 @@
             .then(response => response.json())
             .then(data => {
                 // עדכון כל התוצאות
-                cupsSpan.textContent = data.result_cups;
-                tbsSpan.textContent = data.result_tbs;
-                tsSpan.textContent = data.result_ts;
+                if (cupsSpan) cupsSpan.textContent = data.result_cups || '';
+                if (tbsSpan) tbsSpan.textContent = data.result_tbs || '';
+                if (tsSpan) tsSpan.textContent = data.result_ts || '';
             })
             .catch(error => {
-                cupsSpan.textContent = 'שגיאה בהמרה';
-                tbsSpan.textContent = '';
-                tsSpan.textContent = '';
+                if (cupsSpan) cupsSpan.textContent = 'שגיאה בהמרה';
+                if (tbsSpan) tbsSpan.textContent = '';
+                if (tsSpan) tsSpan.textContent = '';
                 console.error('Error:', error);
             });
         }
