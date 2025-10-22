@@ -6,7 +6,16 @@
     <title>{% block title %}אתר מודרני{% endblock %}</title>
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NRS195L7FB"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-NRS195L7FB'); 
+    </script>
+    </head>
 <body>
     <nav class="navbar">
         <div class="container">
@@ -26,13 +35,13 @@
             <p>&copy; כל הזכויות שמורות לשחר גולד 2025</p>
         </div>
     </footer>
-
+    
     <script>
         // פונקציה: מסתירה את בחירת החומר כשיחידת הקלט היא מ"ל
         function toggleMaterialVisibility() {
             const unit = document.getElementById('unit').value;
             const materialGroup = document.getElementById('material-group'); 
-
+            
             if (materialGroup) { 
                 if (unit === 'ml') {
                     materialGroup.style.display = 'none'; // הסתרה כאשר היחידה היא מ"ל
@@ -47,15 +56,15 @@
             const amountInput = document.getElementById('amount');
             const unitSelect = document.getElementById('unit');
             const materialSelect = document.getElementById('material');
-
+            
             const amount = amountInput.value;
             const unit = unitSelect.value;
             const material = materialSelect.value;
-
+            
             const cupsSpan = document.getElementById('result-cups');
             const tbsSpan = document.getElementById('result-tbs');
             const tsSpan = document.getElementById('result-ts');
-
+            
             // בדיקת תקינות קלט
             if (!amount || parseFloat(amount) <= 0) {
                 cupsSpan.textContent = 'אנא הכניסו כמות תקינה';
@@ -63,7 +72,7 @@
                 tsSpan.textContent = '';
                 return;
             }
-
+            
             fetch('/convert', {
                 method: 'POST',
                 headers: {
@@ -89,21 +98,21 @@
                 console.error('Error:', error);
             });
         }
-
+        
         // הוספת Event Listeners להפעלת החישוב באופן מיידי ובדיקת ה-Visibility
         document.addEventListener('DOMContentLoaded', () => {
             const amountInput = document.getElementById('amount');
             const unitSelect = document.getElementById('unit');
             const materialSelect = document.getElementById('material');
-
+            
             // Event Listeners לחישוב מיידי
             if (amountInput) amountInput.addEventListener('input', updateConversion);
             if (unitSelect) unitSelect.addEventListener('change', updateConversion);
             if (materialSelect) materialSelect.addEventListener('change', updateConversion);
-
+            
             // Event Listeners להצגה/הסתרה של החומר
             if (unitSelect) unitSelect.addEventListener('change', toggleMaterialVisibility);
-
+            
             // הפעלת פונקציות התחלתיות בטעינת העמוד
             toggleMaterialVisibility(); 
             updateConversion(); // חישוב ראשוני
